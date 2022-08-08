@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { Route, Routes } from "react-router";
+import CheckInBox from './components/CheckInBox/CheckInBox';
+import { useSelector } from 'react-redux/';
+import LoginSuccess from './components/LoginSuccess/LoginSuccess';
 
-function App() {
+const App = () => {
+  const {login} = useSelector(state => state.createAccount)
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+      <Route path="/" element={<CheckInBox />} />
+      <Route path="/success" element={<LoginSuccess />} />
+    </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
